@@ -19,7 +19,7 @@ from manager import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('manager/', views.detail, name='detail'),
+    path('', views.detail, name='detail'),
     path('addBook/', views.addBook, name='addBook'),
     path('delBook/<int:book_id>', views.deleteBook, name='delBook'),
 ]
