@@ -1,10 +1,12 @@
-<hl>Book List</hl>
+<hl>xxx软件包入库申请管理系统</hl>
 <table>
     <tr>
-        <td>书名</td>
+        <td>软件名</td>
         <td>作者</td>
-        <td>出版社</td>
-        <td>出版时间</td>
+        <td>来源单位</td>
+        <td>上传时间</td>
+        <td>申请软件包</td>
+        <td>状态</td>
     </tr>
     {% for book in book_list.all %}
     <tr>
@@ -12,14 +14,16 @@
         <td>{{book.author}}</td>
         <td>{{book.pub_house}}</td>
         <td>{{book.pub_date}}</td>
+        <td>{{ book.file }}</td>
+        <td>{{ book.status }}</td>
     <tr>
     {%endfor%}
 </table>
 
-<form action="/addBook/" method="post" name="addBook">
+<form action="/addBook/" enctype="multipart/form-data" method="post" name="addBook">
     {% csrf_token %}
     <p>
-        <span>书名：</span>
+        <span>软件名：</span>
         <input type="text" name="name" />
     </p>
     <p>
@@ -27,9 +31,10 @@
         <input type="text" name="author" />
     </p>
     <p>
-        <span>出版社：</span>
+        <span>来源单位：</span>
         <input type="text" name="pub_house" />
     </p>
+    <input type="file" name="myfile" />
     <input type="submit" value="添加" />
 </form>
 
@@ -40,8 +45,18 @@
         <td>{{ book.author }}</td>
         <td>{{ book.pub_house }}</td>
         <td>{{ book.pub_date }}</td>
+        <td>{{ book.file }}</td>
         <td><a href="{% url 'delBook' book.id %}">删除</a></td>
     </tr>
 {% endfor %}
 </table>
+-->
+
+<!--
+<form enctype="multipart/form-data" action="/uploadFile/" method="post">
+    {% csrf_token %}
+   <input type="file" name="myfile" />
+   <br/>
+   <input type="submit" value="upload"/>
+</form>
 -->

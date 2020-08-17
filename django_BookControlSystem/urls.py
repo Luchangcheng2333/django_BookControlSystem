@@ -20,6 +20,7 @@ from manager import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.detail, name='detail'),
+    path('uploadFile/', views.upload_file, name='uploadFile'),
     path('addBook/', views.addBook, name='addBook'),
     path('delBook/<int:book_id>', views.deleteBook, name='delBook'),
 ]
